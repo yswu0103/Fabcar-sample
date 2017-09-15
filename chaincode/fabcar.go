@@ -46,6 +46,7 @@ type SmartContract struct {
 type Car struct {
 	Make   string `json:"make"`
 	Model  string `json:"model"`
+	Price  string `json:"price"`
 	Colour string `json:"colour"`
 	Owner  string `json:"owner"`
 }
