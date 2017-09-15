@@ -121,7 +121,7 @@ func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Respo
 
 func (s *SmartContract) createCar(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 5 {
+	if len(args) != 6 {
 		return shim.Error("Incorrect number of arguments. Expecting 5")
 	}
 
