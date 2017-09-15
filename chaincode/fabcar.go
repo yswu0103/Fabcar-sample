@@ -95,16 +95,16 @@ func (s *SmartContract) queryCar(APIstub shim.ChaincodeStubInterface, args []str
 
 func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Response {
 	cars := []Car{
-		Car{Make: "Toyota", Model: "Prius", Colour: "blue", Owner: "Tomoko"},
-		Car{Make: "Ford", Model: "Mustang", Colour: "red", Owner: "Brad"},
-		Car{Make: "Hyundai", Model: "Tucson", Colour: "green", Owner: "Jin Soo"},
-		Car{Make: "Volkswagen", Model: "Passat", Colour: "yellow", Owner: "Max"},
-		Car{Make: "Tesla", Model: "S", Colour: "black", Owner: "Adriana"},
-		Car{Make: "Peugeot", Model: "205", Colour: "purple", Owner: "Michel"},
-		Car{Make: "Chery", Model: "S22L", Colour: "white", Owner: "Aarav"},
-		Car{Make: "Fiat", Model: "Punto", Colour: "violet", Owner: "Pari"},
-		Car{Make: "Tata", Model: "Nano", Colour: "indigo", Owner: "Valeria"},
-		Car{Make: "Holden", Model: "Barina", Colour: "brown", Owner: "Shotaro"},
+		Car{Make: "Toyota", Model: "Prius", Price: "1000", Colour: "blue", Owner: "Tomoko"},
+		Car{Make: "Ford", Model: "Mustang", Price: "2000", Colour: "red", Owner: "Brad"},
+		Car{Make: "Hyundai", Model: "Tucson", Price: "3000", Colour: "green", Owner: "Jin Soo"},
+		Car{Make: "Volkswagen", Model: "Passat", Price: "4000", Colour: "yellow", Owner: "Max"},
+		Car{Make: "Tesla", Model: "S", Price: "5000", Colour: "black", Owner: "Adriana"},
+		Car{Make: "Peugeot", Model: "205", Price: "6000", Colour: "purple", Owner: "Michel"},
+		Car{Make: "Chery", Model: "S22L", Price: "7000", Colour: "white", Owner: "Aarav"},
+		Car{Make: "Fiat", Model: "Punto", Price: "8000", Colour: "violet", Owner: "Pari"},
+		Car{Make: "Tata", Model: "Nano", Price: "9000", Colour: "indigo", Owner: "Valeria"},
+		Car{Make: "Holden", Model: "Barina", Price: "10000", Colour: "brown", Owner: "Shotaro"},
 	}
 
 	i := 0
@@ -125,7 +125,7 @@ func (s *SmartContract) createCar(APIstub shim.ChaincodeStubInterface, args []st
 		return shim.Error("Incorrect number of arguments. Expecting 5")
 	}
 
-	var car = Car{Make: args[1], Model: args[2], Colour: args[3], Owner: args[4]}
+	var car = Car{Make: args[1], Model: args[2], Price: args[3],Colour: args[4], Owner: args[5]}
 
 	carAsBytes, _ := json.Marshal(car)
 	APIstub.PutState(args[0], carAsBytes)
@@ -202,4 +202,5 @@ func main() {
 	if err != nil {
 		fmt.Printf("Error creating new Smart Contract: %s", err)
 	}
+	fmt.Println("Hello, 世界")
 }
